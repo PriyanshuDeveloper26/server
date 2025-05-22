@@ -9,7 +9,7 @@ async function createAdminAccount() {
           const newAdmin = new User({
             name:"Admin",
             email:"zidiodev@gmail.com",
-            password: await bcrypt.hash("admin",10),
+            password: await bcrypt.hash("admin@123",10),
             role:"admin"
            });
            await newAdmin.save();
