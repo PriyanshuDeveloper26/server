@@ -14,14 +14,11 @@ async function createAdminAccount() {
       });
       await newAdmin.save();
       console.log("Admin account created successfully");
-      alert("Admin account created successfully");
     } else {
       console.log("Admin already exist");
-      alert("Admin already exist");
     }
   } catch (error) {
     console.error(error.message);
-    alert(error.message);
   }
 }
 
