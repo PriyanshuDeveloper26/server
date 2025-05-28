@@ -7,6 +7,9 @@ const cors = require("cors");
 const createAdminAccount = require("./scripts/admin");
 const app = express();
 const PORT = process.env.PORT || 5000;
+const fileRoute = require("./routes/fileroutes");
+
+
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -16,6 +19,7 @@ createAdminAccount();
 app.use("/user", signupRoute);
 app.use("/auth", loginRoute);
 app.use("/api", userRoute);
+app.use("/file", fileRoute);
 
 // Connect Server
 app.listen(PORT, () => {
