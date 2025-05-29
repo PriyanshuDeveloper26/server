@@ -6,7 +6,8 @@ async function login(req, res) {
     const token = await authService.login(email, password);
     res.json({ token: token });
   } catch (error) {
-    res.status(401).json({ message: "Invalid credentials" });
+    alert("invalid email or password");
+    res.status(401).json({ message: "Invalid email or password" });
   }
 }
 
