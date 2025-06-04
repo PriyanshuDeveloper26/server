@@ -2,7 +2,7 @@ const bcrypt = require("bcrypt");
 const User = require("../models/User");
 const { generateToken } = require("../utils/jwtUtils");
 
-async function login(email, password,res) {
+async function login(email, password, res) {
   try {
     const existingUser = await User.findOne({ email });
     if (!existingUser) {
