@@ -1,16 +1,22 @@
 const mongoose = require('mongoose');
 
-// create dynamic model
-const createDynamicModel = (collectionName, headers) => {
-  const schemaDefinition = {};
-  headers.forEach((key) => {
-    schemaDefinition[key] = { type: mongoose.Schema.Types.Mixed };
-  });
+const RecordSchema = new mongoose.Schema({
+  fileName: {
+    type: String,
+    required: true,
+  },
+  fileType: {
+    type: String,
+    required: true,
+  },
+  size: {
+    type: Number, // in bytes
+    required: true,
+  },
+  uploadDate: {
+    type: Date,
+    default: Date.now,
+  },
+});
 
-  const schema = new mongoose.Schema(schemaDefinition, { strict: false });
-
-  // return model
-  return mongoose.models[collectionName] || mongoose.model(collectionName, schema, collectionName);
-};
-
-module.exports = createDynamicModel;
+module.exports = mongoose.model("Record", RecordSchema);
